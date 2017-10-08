@@ -7,7 +7,7 @@ class CreateCaretakers < ActiveRecord::Migration[5.1]
     	t.string	:address
     	t.boolean	:primary_caretaker
 
-    	t.references :account_id
+    	t.references :account
 
       t.timestamps
     end

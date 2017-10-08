@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171007235932) do
+ActiveRecord::Schema.define(version: 20171008064819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,8 @@ ActiveRecord::Schema.define(version: 20171007235932) do
     t.string "lpid"
     t.string "ocid"
     t.string "product_code"
-    t.integer "primary_id"
+    t.string "primary_id"
+    t.float "current_balance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,10 +31,21 @@ ActiveRecord::Schema.define(version: 20171007235932) do
     t.string "email"
     t.string "address"
     t.boolean "primary_caretaker"
-    t.bigint "account_id_id"
+    t.bigint "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["account_id_id"], name: "index_caretakers_on_account_id_id"
+    t.index ["account_id"], name: "index_caretakers_on_account_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.datetime "date_time"
+    t.float "posted_amount"
+    t.string "description"
+    t.string "short_descript"
+    t.bigint "account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_transactions_on_account_id"
   end
 
 end

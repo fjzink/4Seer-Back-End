@@ -4,7 +4,8 @@ class CreateAccounts < ActiveRecord::Migration[5.1]
     	t.string 	:lpid
     	t.string 	:ocid
     	t.string 	:product_code
-    	t.integer	:primary_id
+    	t.string	:primary_id
+      t.float :current_balance
 
       t.timestamps
     end
