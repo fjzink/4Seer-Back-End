@@ -15,17 +15,19 @@ module Api
 
 		account_details = data["AccessibleAccountDetailList"]
 
-		account_details.each do |d|
-		 	puts d["OperatingCompanyIdentifier"]
-			puts d["PrimaryIdentifier"]
-			puts d["ProductCode"]
+		account_details.each do |details|
+			@account_info = Account.create(
+															lpid: details["LegalParticipantIdentifier"], 
+															ocid: details["OperatingCompanyIdentifier"], 
+															product_code: details["ProductCode"], 
+															primary_id: details["PrimaryIdentifier"] 
+															)
+		 
 		end
-		@account_info = Account.create((
-														lpid: accounts_details["LegalParticipantIdentifier"], 
-														ocid: accounts_details["OperatingCompanyIdentifier"], 
-														product_code: accounts_details["ProductCode"], 
-														primary_id: accounts_details["PrimaryIdentifier"] 
-														))
+
+		# Set Data from API to database
+
+
 		# API call to get user account transactions
 		response = HTTParty.post('https://api119622live.gateway.akana.com:443/account/transactions', 
 			:headers => {
@@ -33,10 +35,12 @@ module Api
 				'SharedSecret': '5f6dac108fe0334831d940a7840c8f12e24ca9ce', 
 				'Content-Type': 'application/json' }, 
 				:body => {
-			    "OperatingCompanyIdentifier": "874",
-			    "ProductCode": "DDA",
-			    "PrimaryIdentifier": "00000000000153150900063"
+			    "OperatingCompanyIdentifier": @account_info.ocid,
+			    "ProductCode": @account_info.product_code,
+			    "PrimaryIdentifier": @account_info.primary_id
 				}.to_json)
+
+		data = JSON.parse(response.body)
 	end
 
 end
