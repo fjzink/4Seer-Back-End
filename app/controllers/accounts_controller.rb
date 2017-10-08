@@ -1,14 +1,17 @@
 module Api
 
 	class AccountsController < ApplicationController
-		# API call to get users accounts info
-
-
-		# Set Data from API to database
-
-
-		# API call to get user account transactions
 		
+		def show
+			@account = Account.find(id: params[:id])
+				
+			if @account
+				render json: @account.transactions.ordered_json
+			else
+				render :nothing => true, status: 404
+			end
+		end
+
 	end
 
 end
