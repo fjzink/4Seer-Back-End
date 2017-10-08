@@ -7,7 +7,7 @@ response = HTTParty.post('http://api119525live.gateway.akana.com:80/user/account
     'SharedSecret': '5f6dac108fe0334831d940a7840c8f12e24ca9ce', 
     'Content-Type': 'application/json' }, 
     :body => {
-      'LegalParticipantIdentifier' => '000996202016520455'
+      'LegalParticipantIdentifier' => '913996201744144603'
 }.to_json)
 
 data = JSON.parse(response.body)
@@ -16,11 +16,11 @@ account_details = data["AccessibleAccountDetailList"]
 
 account_details.each do |details|
   @account_info = Account.create(
-    lpid: details["LegalParticipantIdentifier"], 
-    ocid: details["OperatingCompanyIdentifier"], 
-    product_code: details["ProductCode"], 
-    primary_id: details["PrimaryIdentifier"],
-    current_balance: details["BasicAccountDetail"]["Balances"]["CurrentBalanceAmount"]
+                  lpid: details["LegalParticipantIdentifier"], 
+                  ocid: details["OperatingCompanyIdentifier"], 
+                  product_code: details["ProductCode"], 
+                  primary_id: details["PrimaryIdentifier"],
+                  current_balance: details["BasicAccountDetail"]["Balances"]["CurrentBalanceAmount"]
   )
 end
 
