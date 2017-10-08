@@ -17,11 +17,11 @@ module Api
 
 		account_details.each do |details|
 			@account_info = Account.create(
-															lpid: details["LegalParticipantIdentifier"], 
-															ocid: details["OperatingCompanyIdentifier"], 
-															product_code: details["ProductCode"], 
-															primary_id: details["PrimaryIdentifier"] 
-															)
+				lpid: details["LegalParticipantIdentifier"], 
+				ocid: details["OperatingCompanyIdentifier"], 
+				product_code: details["ProductCode"], 
+				primary_id: details["PrimaryIdentifier"] 
+			)
 		 
 		end
 
