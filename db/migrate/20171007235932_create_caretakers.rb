@@ -1,7 +1,6 @@
 class CreateCaretakers < ActiveRecord::Migration[5.1]
   def change
     create_table :caretakers do |t|
-    	t.integer	:id 
     	t.string 	:name
     	t.string	:phone
     	t.string	:email
