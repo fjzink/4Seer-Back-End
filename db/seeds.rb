@@ -19,7 +19,8 @@ account_details.each do |details|
     lpid: details["LegalParticipantIdentifier"], 
     ocid: details["OperatingCompanyIdentifier"], 
     product_code: details["ProductCode"], 
-    primary_id: details["PrimaryIdentifier"] 
+    primary_id: details["PrimaryIdentifier"],
+    current_balance: details["BasicAccountDetail"]["Balances"]["CurrentBalanceAmount"]
   )
 end
 

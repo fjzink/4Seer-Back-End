@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20171008064819) do
     t.string "ocid"
     t.string "product_code"
     t.string "primary_id"
+    t.float "current_balance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
