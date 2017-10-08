@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-
-  resources :accounts do 
-  	resources :transactions
+  namespace :api do
+    resources :accounts, only: [:show]
   end
-
 end
