@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20171007235932) do
     t.string "lpid"
     t.string "ocid"
     t.string "product_code"
-    t.integer "primary_id"
+    t.string "primary_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
