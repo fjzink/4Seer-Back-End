@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'http'
+gem 'httparty'
 # gem 'simple_command'
 # gem 'dotenv-rails'
 # gem 'jwt'

@@ -3,7 +3,7 @@ module Api
 	class CaretakersController < ApplicationController
 
 		def create
-			@caretaker = Caretaker.new((name: params[:name], phone: params[:phone], email: params[:email], address: params[:address], primary_caretaker:, email: params[:email] params[:primary_caretaker], account_id: params[:account_id]))
+			@caretaker = Caretaker.new((name: params[:name], phone: params[:phone], email: params[:email], address: params[:address], primary_caretaker: params[:primary_caretaker], account_id: params[:account_id]))
 			
 			if @user.save
         render json: {status: 'SUCCESS', message: 'Caretaker Added'}.to_json
@@ -18,7 +18,7 @@ module Api
 		end
 
 		def update
-			if @caretaker.update((name: params[:name], phone: params[:phone], email: params[:email], address: params[:address], primary_caretaker:, email: params[:email] params[:primary_caretaker], account_id: params[:account_id]))
+			if @caretaker.update((name: params[:name], phone: params[:phone], email: params[:email], address: params[:address], primary_caretaker: params[:primary_caretaker], account_id: params[:account_id]))
         render json: {status: 'SUCCESS', message: 'Caretaker Update'}.to_json
       else
         render json: {errors: ["Caretaker not updated!"], status: 422}.to_json
@@ -26,7 +26,7 @@ module Api
 		end
 
 		def destroy
-			if @caretaker.destroy((name: params[:name], phone: params[:phone], email: params[:email], address: params[:address], primary_caretaker:, email: params[:email] params[:primary_caretaker], account_id: params[:account_id]))
+			if @caretaker.destroy((name: params[:name], phone: params[:phone], email: params[:email], address: params[:address], primary_caretaker: params[:primary_caretaker], account_id: params[:account_id]))
         render text: "Caretaker Removed"
       else
         render text: "Unable to remove Caretaker"
