@@ -5,8 +5,10 @@ class CreateTransactions < ActiveRecord::Migration[5.1]
       t.float :posted_amount
       t.string :description
       t.string :short_descript
+      t.references :account
 
       t.timestamps
     end
   end
 end
+
